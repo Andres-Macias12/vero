@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1></h1>
+        <nav>
+            <a href="{% url 'comercio-list' %}">Comercios</a>
+            <a href="{% url 'novedad-list' %}">Novedades</a>
+            <a href="{% url 'register' %}">Registro</a>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p></p>
+    </footer>
+</body>
+</html>

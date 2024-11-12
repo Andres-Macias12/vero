@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ novedad.titulo }}</h1>
+  <p>Descripción: {{ novedad.descripcion }}</p>
+  <p>Fecha de Publicación: {{ novedad.fecha_publicacion }}</p>
+  <a href="{% url 'novedad-update' novedad.pk %}">Editar Novedad</a>
+  <a href="{% url 'novedad-delete' novedad.pk %}">Eliminar Novedad</a>
+  <a href="{% url 'novedad-list' %}">Volver a la lista</a>
+{% endblock %}

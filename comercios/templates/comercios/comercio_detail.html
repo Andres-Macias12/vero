@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>{{ comercio.nombre }}</h1>
+  <p>Descripción: {{ comercio.descripcion }}</p>
+  <p>Categoría: {{ comercio.categoria }}</p>
+  <p>Dirección: {{ comercio.direccion }}</p>
+  <p>Contacto: {{ comercio.contacto }}</p>
+  <a href="{% url 'comercio-update' comercio.pk %}">Editar Comercio</a>
+  <a href="{% url 'comercio-delete' comercio.pk %}">Eliminar Comercio</a>
+  <a href="{% url 'comercio-list' %}">Volver a la lista</a>
+{% endblock %}

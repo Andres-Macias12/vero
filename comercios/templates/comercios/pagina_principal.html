@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Plataforma de Comercios Locales</h1>
+        <nav>
+            <a href="{% url 'comercio-list' %}">Ver Comercios</a>
+            <a href="{% url 'register' %}">Registrarse</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Novedades</h2>
+        <div class="novedades">
+            {% for novedad in novedades %}
+                <div class="novedad">
+                    <h3>{{ novedad.titulo }}</h3>
+                    <p>{{ novedad.descripcion }}</p>
+                    {% if novedad.imagen %}
+                        <img src="{{ novedad.imagen.url }}" alt="{{ novedad.titulo }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Plataforma de Comercios Locales</p>
+    </footer>
+</body>
+</html>
