@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Comunitario</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <div id="chat-log">
+            {% for message in messages %}
+                <p><strong>{{ message.user.username }}:</strong> {{ message.content }}</p>
+            {% endfor %}
+        </div>
+        <form id="chat-form" method="post">
+            {% csrf_token %}
+            <input type="text" id="chat-message-input" name="content" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#chat-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "chat" %}',
+                    data: {
+                        'content': $('#chat-message-input').val(),
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function() {
+                        $('#chat-message-input').val('');
+                        loadMessages();
+                    }
+                });
+            });
+
+            function loadMessages() {
+                $.get('{% url "get_messages" %}', function(data) {
+                    $('#chat-log').html('');
+                    data.messages.forEach(function(message) {
+                        $('#chat-log').append('<p><strong>' + message.user + ':</strong> ' + message.content + '</p>');
+                    });
+                });
+            }
+
+            setInterval(loadMessages, 3000);  // Actualiza cada 3 segundos
+        });
+    </script>
+</body>
+</html>

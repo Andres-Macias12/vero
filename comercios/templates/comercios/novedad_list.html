@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
-  <h1>Lista de Novedades</h1>
-  <ul>
+<h1>Lista de Novedades</h1>
+<ul>
     {% for novedad in novedades %}
-      <li><a href="{% url 'novedad-detail' novedad.pk %}">{{ novedad.titulo }}</a></li>
+        <li>
+            <strong>Título:</strong> {{ novedad.titulo }}<br>
+            {{ novedad.descripcion }}
+        </li>
     {% endfor %}
-  </ul>
-  <a href="{% url 'novedad-create' %}">Crear Novedad</a>
+</ul>
+{% if user.is_staff %}
+    <a href="{% url 'novedad-create' %}">Crear Novedad</a>
+{% endif %}
 {% endblock %}
+<p>Usuario actual: {{ user.username }} - Staff: {{ user.is_staff }}</p>

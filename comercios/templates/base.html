@@ -4,25 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Aplicación{% endblock %}</title>
+    <title>Tu Título</title>
+    <!-- Asegúrate de que la ruta sea correcta -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <h1></h1>
-        <nav>
-            <a href="{% url 'comercio-list' %}">Comercios</a>
-            <a href="{% url 'novedad-list' %}">Novedades</a>
-            <a href="{% url 'register' %}">Registro</a>
-        </nav>
-    </header>
-    
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        <p></p>
-    </footer>
+    <!-- Contenido de la página -->
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

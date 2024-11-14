@@ -1,36 +1,42 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
-</head>
-<body>
-    <header>
-        <h1>Bienvenido a la Plataforma de Comercios Locales</h1>
-        <nav>
-            <a href="{% url 'comercio-list' %}">Ver Comercios</a>
-            <a href="{% url 'register' %}">Registrarse</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Novedades</h2>
-        <div class="novedades">
-            {% for novedad in novedades %}
-                <div class="novedad">
-                    <h3>{{ novedad.titulo }}</h3>
-                    <p>{{ novedad.descripcion }}</p>
-                    {% if novedad.imagen %}
-                        <img src="{{ novedad.imagen.url }}" alt="{{ novedad.titulo }}">
-                    {% endif %}
-                </div>
-            {% endfor %}
+
+{% block content %}
+<div class="header">
+    <div class="logo">
+        <img src="{% static 'imagenes/pagina_principal/logo.png' %}" alt="Logo" class="logo-image">
+    </div>
+    <div class="search-bar">
+        <form method="GET" action="{% url 'comercios' %}">
+            <input type="text" name="q" placeholder="Buscar comercios..." class="search-input">
+            <button type="submit" class="search-btn">
+                </button>
+        </form>
+    </div>
+    <div class="top-buttons">
+        <a href="{% url 'comercios' %}" class="btn">Comercios</a>
+        <a href="{% url 'novedades' %}" class="btn">Novedades</a>
+        <a href="{% url 'registro' %}" class="btn">Regístrate</a>
+        <a href="{% url 'login' %}" class="registered-link">Ingresar</a>
+    </div>
+</div>
+
+<div class="hero">
+    <img src="{% static 'imagenes/pagina_principal/puente4sur.jpg' %}" alt="Imagen de fondo" class="hero-image">
+</div>
+
+
+<div class="novedades">
+    {% for novedad in novedades %}
+        <div class="novedad">
+            <h3>{{ novedad.titulo }}</h3>
+            <p>{{ novedad.descripcion }}</p>
+            {% if novedad.imagen %}
+                <img src="{{ novedad.imagen.url }}" alt="{{ novedad.titulo }}">
+            {% endif %}
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Plataforma de Comercios Locales</p>
-    </footer>
-</body>
-</html>
+    {% empty %}
+        <p>No hay novedades disponibles en este momento.</p>
+    {% endfor %}
+</div>
+{% endblock %}

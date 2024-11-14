@@ -1,0 +1,109 @@
+/* styles.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-image {
+    max-height: 150px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    width: 200px;
+}
+
+.search-btn {
+    background-color: #3498db;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.top-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.registered-link {
+    font-size: 14px;
+    color: #3498db;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin: 20px;
+}
+
+.hero-image {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+.novedades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.novedad {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    width: calc(33.333% - 40px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.novedad img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
