@@ -1,4 +1,5 @@
 # comercios/urls.py
+from . import views
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -40,6 +41,9 @@ urlpatterns = [
     # Otras URLs...
     path('chat/', chat_view, name='chat'),
     path('get_messages/', get_messages, name='get_messages'),
+    
+    path('', views.home, name='home'),
+    
 ]
 
 if settings.DEBUG:

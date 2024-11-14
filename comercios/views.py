@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from .models import Comercio, Novedad, Message
 from .forms import ComercioForm, NovedadForm, UserRegistrationForm
+from django.contrib import messages
 
 def chat_view(request):
     if request.method == 'POST':
@@ -115,3 +116,6 @@ class NovedadDeleteView(DeleteView):
     model = Novedad
     template_name = 'comercios/novedad_confirm_delete.html'
     success_url = reverse_lazy('novedad-list')
+    
+def home(request):
+    return render(request, 'comercios/pagina_principal.html')

@@ -1,109 +1,308 @@
-/* styles.css */
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #f4f4f9;
 }
 
+/* Header - Barra de navegación */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .logo-image {
     max-height: 150px;
+    width: auto;
 }
 
-.search-bar {
-    flex-grow: 1;
+/* Contenedor de los enlaces centrados (sin botones) */
+.nav-buttons {
     display: flex;
     justify-content: center;
+    gap: 20px;
+    flex-grow: 1;
 }
 
-.search-input {
-    padding: 5px;
+.nav-buttons .home-link,
+.nav-buttons .normal-link {
+    color: #41caec;  /* Color de texto claro */
+    text-decoration: none;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
-    width: 200px;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 25px;
+}
+
+.nav-buttons .home-link:hover,
+.nav-buttons .normal-link:hover {
+    color: #2980b9;
+    background-color: #34495e;  /* Fondo cuando se hace hover */
+}
+
+/* Contenedor de los botones de acción y la lupa */
+.top-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.top-buttons .btn {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.top-buttons .btn:hover {
+    background-color: #2980b9;
 }
 
 .search-btn {
     background-color: #3498db;
     border: none;
-    padding: 5px 10px;
-    border-radius: 0 5px 5px 0;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
 }
 
-.search-icon {
-    width: 20px;
-    height: 20px;
+.search-btn:hover {
+    background-color: #2980b9;
 }
 
-.top-buttons {
-    display: flex;
-    gap: 10px;
+.lupa-icon {
+    font-size: 20px;  /* Ajusta el tamaño del icono */
+    color: white;     /* Hace que el icono sea blanco */
+    transition: transform 0.3s ease;
 }
 
-.btn {
-    background-color: #3498db;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 12px;
-}
-
-.registered-link {
-    font-size: 14px;
-    color: #3498db;
-    text-decoration: none;
-    margin-top: 5px;
-}
-
+/* Hero Image */
 .hero {
     position: relative;
     text-align: center;
     color: white;
-    margin: 20px;
+    margin-top: 100px;
 }
 
 .hero-image {
     width: 100%;
-    max-height: 300px;
-    border-radius: 25px;
+    max-height: 400px;
     object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Sección Acerca de */
+.about {
+    padding: 50px;
+    background-color: #ecf0f1;
+    text-align: center;
+}
+
+.about h2 {
+    color: #3498db;
+    font-size: 32px;
+}
+
+.about p {
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+/* Sección Beneficios */
+.benefits {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.benefits h2 {
+    color: #3498db;
+    font-size: 32px;
+}
+
+.benefits ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.benefits li {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin: 10px 0;
+}
+
+.benefits i {
+    color: #3498db;
+    margin-right: 10px;
+}
+
+/* Sección Testimonios */
+.testimonials {
+    padding: 50px;
+    background-color: #ecf0f1;
+    text-align: center;
+}
+
+.testimonials h2 {
+    color: #3498db;
+    font-size: 32px;
+}
+
+.testimonial {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+/* Sección Llamado a la Acción */
+.cta {
+    padding: 50px;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta .cta-btn {
+    background-color: #2980b9;
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.cta .cta-btn:hover {
+    background-color: #1c5d8b;
+}
+
+/* Novedades Section */
 .novedades {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .novedad {
     background-color: #fff;
     border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 10px;
     width: calc(33.333% - 40px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.novedad:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.novedad h3 {
+    color: #3498db;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.novedad p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
 }
 
 .novedad img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 5px;
+}
+
+/* Estilos para el Footer */
+.footer {
+    background-color: #25f1d6;  /* Fondo oscuro */
+    color: white;
+    padding: 20px 50px;  /* Más padding para que haya espacio en los lados */
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;  /* Asegura que los elementos se ajusten en pantallas pequeñas */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;  /* Espacio entre los elementos */
+    width: 100%;  /* Hace que ocupe todo el ancho */
+    align-items: center;
+}
+
+.footer-logo {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-logo-img {
+    max-width: 150px;
+    height: auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+}
+
+.social-icon {
+    font-size: 30px;
+    color: white;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #3498db;  /* Color azul al pasar el mouse */
+}
+
+.footer-info {
+    text-align: right;
+    flex: 2;
+    font-size: 14px;
+}
+
+.footer-info p {
+    margin: 5px 0;
 }

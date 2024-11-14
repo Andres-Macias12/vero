@@ -2,30 +2,58 @@
 {% load static %}
 
 {% block content %}
+
+<head>
+    <!-- Agregar Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<!-- Header -->
 <div class="header">
     <div class="logo">
         <img src="{% static 'imagenes/pagina_principal/logo.png' %}" alt="Logo" class="logo-image">
     </div>
-    <div class="search-bar">
-        <form method="GET" action="{% url 'comercios' %}">
-            <input type="text" name="q" placeholder="Buscar comercios..." class="search-input">
-            <button type="submit" class="search-btn">
-                </button>
-        </form>
+    
+    <!-- Contenedor para los enlaces centrados (sin botones) -->
+    <div class="nav-buttons">
+        <a href="{% url 'home' %}" class="home-link">Inicio</a>
+        <a href="{% url 'comercios' %}" class="normal-link">Comercios</a>
+        <a href="{% url 'novedades' %}" class="normal-link">Novedades</a>
     </div>
+
+    <!-- Contenedor para los botones de acción y la lupa -->
     <div class="top-buttons">
-        <a href="{% url 'comercios' %}" class="btn">Comercios</a>
-        <a href="{% url 'novedades' %}" class="btn">Novedades</a>
-        <a href="{% url 'registro' %}" class="btn">Regístrate</a>
-        <a href="{% url 'login' %}" class="registered-link">Ingresar</a>
+        <a href="{% url 'registro' %}" class="btn action-btn">Regístrate</a>
+        <a href="{% url 'login' %}" class="btn action-btn">Ingresar</a>
+        <button class="search-btn" id="search-btn">
+            <!-- Usamos el icono de lupa de Font Awesome -->
+            <i class="fas fa-search lupa-icon"></i>
+        </button>
     </div>
 </div>
 
+<!-- Hero Section (Imagen de fondo destacada) -->
 <div class="hero">
     <img src="{% static 'imagenes/pagina_principal/puente4sur.jpg' %}" alt="Imagen de fondo" class="hero-image">
 </div>
 
+<!-- Sección Acerca de la Aplicación -->
+<section class="about">
+    <h2>¿Qué es Al Barrio?</h2>
+    <p>Al Barrio es una aplicación que conecta a los comerciantes locales con los residentes, brindándoles la oportunidad de descubrir productos y servicios cercanos de manera fácil y rápida.</p>
+</section>
 
+<!-- Sección Beneficios -->
+<section class="benefits">
+    <h2>Beneficios de Usar Al Barrio</h2>
+    <ul>
+        <li><i class="fas fa-check-circle"></i> Encuentra productos locales fácilmente.</li>
+        <li><i class="fas fa-check-circle"></i> Conoce las novedades y ofertas de tu comunidad.</li>
+        <li><i class="fas fa-check-circle"></i> Soporte y atención personalizada a través de la app.</li>
+    </ul>
+</section>
+
+<!-- Sección Novedades (Sin cambios) -->
 <div class="novedades">
     {% for novedad in novedades %}
         <div class="novedad">
@@ -39,4 +67,74 @@
         <p>No hay novedades disponibles en este momento.</p>
     {% endfor %}
 </div>
+
+<!-- Sección Testimonios -->
+<section class="testimonials">
+    <h2>Lo que dicen nuestros usuarios</h2>
+    <div class="testimonial">
+        <p>"¡Increíble! Ahora puedo comprar productos locales y descubrir nuevos comercios sin salir de mi barrio." - Juan Pérez</p>
+    </div>
+    <div class="testimonial">
+        <p>"Al Barrio me ha permitido conocer negocios cercanos que no sabía que existían. ¡Totalmente recomendado!" - Ana López</p>
+    </div>
+</section>
+
+<!-- Llamado a la Acción (CTA) -->
+<section class="cta">
+    <h2>¡Únete a nuestra comunidad!</h2>
+    <p>Descubre lo mejor de tu barrio, regístrate hoy y empieza a explorar los comercios cercanos.</p>
+    <a href="{% url 'registro' %}" class="btn cta-btn">Regístrate Ahora</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <!-- Logo en el footer -->
+        <div class="footer-logo">
+            <img src="{% static 'imagenes/pagina_principal/logo.png' %}" alt="Logo" class="footer-logo-img">
+        </div>
+
+        <!-- Redes Sociales -->
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="footer-info">
+            <p>&copy; 2024 Al Barrio. Todos los derechos reservados.</p>
+            <p>Dirección: Calle 123, Ciudad, País</p>
+            <p>Contacto: info@albarrio.com</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Script para expandir el campo de búsqueda -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchBtn = document.getElementById('search-btn');
+        const searchBar = document.getElementById('search-bar');
+        const searchInput = document.getElementById('search-input');
+        
+        // Cuando se haga clic en la lupa
+        searchBtn.addEventListener('click', function() {
+            // Expandir el campo de búsqueda
+            searchBar.style.width = '300px';
+            searchInput.style.width = '300px';  // Se expande el input de búsqueda
+            searchInput.focus();  // Pone el foco en el campo de búsqueda
+        });
+
+        // Si se hace clic fuera del campo de búsqueda, se colapsa
+        document.addEventListener('click', function(e) {
+            if (!searchBar.contains(e.target)) {
+                searchBar.style.width = '0';
+                searchInput.style.width = '0';  // Colapsa el input de búsqueda
+            }
+        });
+    });
+</script>
+
 {% endblock %}
